@@ -40,32 +40,50 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
 
                 <Transition
                     as={Fragment}
-                    data-transition="transition ease-in duration-100"
-                    data-enter="opacity-100"
-                    data-leave="opacity-0"
-                    afterLeave={() => setQuery('')}
+                    leave='transition ease-in duration-100'
+                    leaveFrom='opacity-100'
+                    leaveTo='opacity-0'
+                    afterLeave={() => setQuery("")}
                 >
-                    <ComboboxOptions>
-                        {filteredManufacturers.map((item) => (
-                                <ComboboxOption
-                                    key={item}
-                                    className={({ active }) =>
-                                      `relative search-manufacturer__option ${
-                                        active ? "bg-primary-blue text-white" : "text-gray-900"
-                                      }`
-                                    }
-                                    value={item}
-                                >
-                                    {({ focus, selected }) => (
-                                         <div className={clsx('group flex gap-2')}>
-                                        {selected}
-                                        {item}
-                                        </div>
-                                    )}
-                                </ComboboxOption>
-                            ))
-                        }
-                    </ComboboxOptions>
+                    <ComboboxOptions
+              className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'
+              static
+            >
+              {filteredManufacturers.length === 0 && query !== "" ? (
+                <ComboboxOption
+                  value={query}
+                  className='search-manufacturer__option'
+                >
+                  Create "{query}"
+                </ComboboxOption>
+              ) : (
+                filteredManufacturers.map((item) => (
+                  <ComboboxOption
+                    key={item}
+                    className={({ active }) =>
+                      `relative search-manufacturer__option ${
+                        active ? "bg-primary-blue text-white" : "text-gray-900"
+                      }`
+                    }
+                    value={item}
+                  >
+                    {({ selected, active }) => (
+                      <>
+                        <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                          {item}
+                        </span>
+
+                        {/* Show an active blue background color if the option is selected */}
+                        {selected ? (
+                          <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active? "text-white": "text-pribg-primary-purple"}`}
+                          ></span>
+                        ) : null}
+                      </>
+                    )}
+                  </ComboboxOption>
+                ))
+              )}
+            </ComboboxOptions>
                 </Transition>
 
             </div>

@@ -5,7 +5,7 @@ import { Navbar, Footer } from "@/components";
 
 
 export const metadata: Metadata = {
-  title: "Car Hub",
+  title: "Next Car Hub",
   description: "Discover the best cars in the world.",
 };
 

@@ -8,7 +8,7 @@ import Image from 'next/image';
 import clsx from 'clsx';
 
 
-const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturerProps) => {
+const SearchManufacturer = ({selected, setSelected} : SearchManufacturerProps) => {
     const [query, setQuery] = useState('');
 
     const filteredManufacturers = query === "" ? manufacturers : manufacturers.filter((item) => (
@@ -19,7 +19,7 @@ const SearchManufacturer = ({manufacturer, setManufacturer} : SearchManufacturer
 
   return (
     <div className='search-manufacturer'>
-        <Combobox value={manufacturer} onChange={setManufacturer}>
+        <Combobox value={selected} onChange={setSelected}>
             <div className='relative w-full'>
                 <ComboboxButton className="absolute top-[14px]">
                     <Image 

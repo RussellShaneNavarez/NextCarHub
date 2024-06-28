@@ -27,6 +27,3 @@ NextCarHub is a modern car showcase web application built using Next.js and Type
 ## Contact
 
 For any questions or suggestions, you can contact me at: russellnavarez18@gmail.com
-
-
-rewrite with a new project name NextCarHub, made with Next.js typescript, tailwind css, rapid API for cars and imagin studio API for car images
